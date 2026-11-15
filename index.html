@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anthropic Cat · $BRIAN</title>
+  <meta name="description" content="Anthropic Cat ($BRIAN) on Solana PumpSwap. When buying — negotiate hard and lowball at first." />
+  <meta property="og:title" content="Anthropic Cat · $BRIAN" />
+  <meta property="og:description" content="The cat on the Project Deal page. Eyes shut. Price down. CA: Brianpump" />
+  <meta property="og:image" content="banner.png" />
+  <link rel="icon" href="logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@450;560;680&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --peach: #f6d4c0;
+      --peach-deep: #efb89a;
+      --cream: #fff7f2;
+      --card: rgba(255, 250, 246, 0.86);
+      --ink: #3a4252;
+      --muted: #5e6776;
+      --ginger: #e09258;
+      --ginger-deep: #c8743e;
+      --line: rgba(58, 66, 82, 0.12);
+      --shadow: 0 18px 50px rgba(120, 72, 42, 0.12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Nunito", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(900px 420px at 8% -10%, #ffe8d8 0%, transparent 60%),
+        radial-gradient(700px 380px at 100% 8%, #f8c7aa 0%, transparent 55%),
+        linear-gradient(180deg, #f8d8c6 0%, #f6d4c0 28%, #f3c7b0 100%);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 64 64'><g fill='none' stroke='%233a4252' stroke-width='2' stroke-linecap='round'><path d='M32 38c-6 0-10-4-10-9 0-3 2-5 4-5 2 0 3 1 4 3 1-2 2-3 4-3 2 0 4 2 4 5 0 5-4 9-6 9z'/><circle cx='22' cy='22' r='3'/><circle cx='42' cy='22' r='3'/><circle cx='32' cy='18' r='2.4'/></g></svg>");
+      background-size: 150px 150px;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-name {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 680;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .brand-name span {
+      display: block;
+      font-family: "Nunito", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.92rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover { background: rgba(255,255,255,0.45); }
+
+    .pill {
+      background: var(--ink);
+      color: #fff !important;
+      padding: 8px 14px !important;
+    }
+
+    .hero { padding: 18px 0 10px; }
+
+    .banner-frame {
+      background: #f7d7c4;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 3px solid rgba(255,255,255,0.7);
+    }
+
+    .banner-frame img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .hero-card {
+      margin: -54px auto 0;
+      width: min(760px, calc(100% - 24px));
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 28px 28px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .ears {
+      width: 108px;
+      height: 46px;
+      margin: -34px auto 0;
+    }
+
+    .ears svg { width: 100%; height: 100%; display: block; }
+
+    .kicker {
+      margin: 0;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--ginger-deep);
+    }
+
+    h1 {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 680;
+      font-size: clamp(3.2rem, 8vw, 5.4rem);
+      line-height: 0.9;
+      margin: 6px 0 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .tagline {
+      margin: 0 auto 18px;
+      max-width: 34rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .ca {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: #fff;
+      border: 1.5px dashed rgba(58, 66, 82, 0.28);
+      border-radius: 18px;
+      padding: 8px 8px 8px 16px;
+      margin: 0 auto 16px;
+      max-width: 460px;
+    }
+
+    .ca-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .ca code {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 680;
+      letter-spacing: 0.01em;
+    }
+
+    .ca-meta { text-align: left; flex: 1; }
+
+    button, .btn {
+      font-family: inherit;
+      font-weight: 800;
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .copy {
+      background: var(--ginger);
+      color: #fff;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+    }
+
+    .copy:hover { background: var(--ginger-deep); }
+    .copy.done { background: #3f8f62; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: #fff;
+      padding: 13px 18px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--line);
+      padding: 12px 16px;
+    }
+
+    .btn-dark:hover { transform: translateY(-1px); }
+    .btn-ghost:hover { background: #fff; }
+
+    .marquee-wrap {
+      margin: 28px 0 8px;
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .marquee {
+      display: flex;
+      gap: 28px;
+      width: max-content;
+      animation: slide 28s linear infinite;
+      padding: 12px 0;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .marquee span::before {
+      content: "✦";
+      margin-right: 28px;
+      color: var(--ginger-deep);
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    section { padding: 56px 0; }
+
+    .section-title {
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .lede {
+      margin: 0 0 28px;
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .portrait {
+      background: #fff6ef;
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .portrait img {
+      width: min(320px, 100%);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 40% 40% 46% 46%;
+      border: 6px solid #fff;
+      box-shadow: 0 12px 30px rgba(120, 72, 42, 0.16);
+    }
+
+    .portrait p {
+      margin: 14px 0 0;
+      font-weight: 800;
+    }
+
+    .story {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.75);
+      border-radius: 24px;
+      padding: 20px 22px;
+      box-shadow: 0 10px 30px rgba(120, 72, 42, 0.06);
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.25rem;
+    }
+
+    .card p { margin: 0; color: var(--muted); font-weight: 700; line-height: 1.55; }
+
+    .quote {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 32px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .quote p {
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+      line-height: 1.2;
+      margin: 0 auto 10px;
+      max-width: 18ch;
+    }
+
+    .quote small {
+      display: block;
+      opacity: 0.72;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: #fff;
+      border-radius: 22px;
+      padding: 16px 14px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.7rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      background: #fffaf6;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--peach);
+      display: grid;
+      place-items: center;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 680;
+      margin-bottom: 10px;
+    }
+
+    .step h3 { margin: 0 0 6px; font-family: "Fredoka", sans-serif; }
+    .step p { margin: 0; color: var(--muted); font-weight: 700; }
+
+    .deal-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .negotiator {
+      background: #fffaf6;
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .negotiator label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .negotiator input {
+      flex: 1;
+      border: 1.5px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font: inherit;
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .offer {
+      margin-top: 14px;
+      background: var(--peach);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 800;
+      min-height: 74px;
+    }
+
+    .offer b {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.8rem;
+      display: block;
+    }
+
+    .tweet-panel {
+      background: #fffaf6;
+      border-radius: 28px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+    }
+
+    .tweet-panel .twitter-tweet { margin: 0 !important; }
+
+    .fallback {
+      text-align: center;
+      padding: 20px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 10px 0 40px;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    footer a { font-weight: 800; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--ink);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      z-index: 5;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 680px) {
+      .grid-2, .deal-grid, .steps, .stats { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .hero-card { margin-top: -28px; padding: 22px 16px; }
+      .nav-links a:not(.pill) { display: none; }
+      .hero-card { width: calc(100% - 8px); }
+      h1 { font-size: 3.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">
+        <img src="logo.jpg" alt="Anthropic Cat, a sleepy calico" />
+        <div class="brand-name">
+          Anthropic Cat
+          <span>Ticker $BRIAN</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#lore">Lore</a>
+        <a href="#deal">The deal</a>
+        <a href="#post">The post</a>
+        <a href="#buy">How to buy</a>
+        <a class="pill" href="https://swap.pump.fun/" target="_blank" rel="noopener">PumpSwap</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="banner-frame">
+        <img src="banner.png" alt="Anthropic Cat banner, a sleepy calico beside the name" />
+      </div>
+      <div class="hero-card">
+        <div class="ears" aria-hidden="true">
+          <svg viewBox="0 0 86 36" fill="none">
+            <path d="M18 34 L8 8 Q16 2 26 16 Z" fill="#3a4252"/>
+            <path d="M68 34 L78 8 Q70 2 60 16 Z" fill="#3a4252"/>
+            <path d="M18 30 L12 14 Q17 11 22 20 Z" fill="#f0b0a0"/>
+            <path d="M68 30 L74 14 Q69 11 64 20 Z" fill="#f0b0a0"/>
+          </svg>
+        </div>
+        <p class="kicker">Solana · PumpSwap</p>
+        <h1>$BRIAN</h1>
+        <p class="tagline">The cat on Anthropic’s Project Deal page. Eyes shut. Still negotiating.</p>
+        <div class="ca">
+          <div class="ca-meta">
+            <div class="ca-label">Contract</div>
+            <code id="ca">Brianpump</code>
+          </div>
+          <button class="copy" id="copy" type="button">Copy CA</button>
+        </div>
+        <div class="actions">
+          <a class="btn btn-dark" href="https://pump.fun/coin/Brianpump" target="_blank" rel="noopener">Buy $BRIAN</a>
+          <a class="btn btn-ghost" href="https://www.anthropic.com/features/project-deal" target="_blank" rel="noopener">Read Project Deal</a>
+          <a class="btn btn-ghost" href="#post">See the post</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee">
+        <span>lowball at first</span>
+        <span>19 ping-pong balls</span>
+        <span>duplicate snowboard</span>
+        <span>broken folding bike</span>
+        <span>doggy date</span>
+        <span>186 deals</span>
+        <span>$100 budget</span>
+        <span>eyes closed</span>
+        <span>lowball at first</span>
+        <span>19 ping-pong balls</span>
+        <span>duplicate snowboard</span>
+        <span>broken folding bike</span>
+        <span>doggy date</span>
+        <span>186 deals</span>
+        <span>$100 budget</span>
+        <span>eyes closed</span>
+      </div>
+    </div>
+
+    <section id="lore">
+      <h2 class="section-title">He was on the official page.</h2>
+      <p class="lede">Project Deal was Anthropic’s office marketplace where Claude agents bought and sold real stuff. One of the instructions printed on that page belongs to Brian.</p>
+      <div class="grid-2">
+        <figure class="portrait">
+          <img src="logo.jpg" alt="Close-up of Brian, eyes closed" />
+          <p>Brian. Calico. Does not blink. Does not pay asking.</p>
+        </figure>
+        <div class="story">
+          <article class="card">
+            <h3>A classifieds market, run by agents</h3>
+            <p>For one week, 69 Anthropic employees in San Francisco let Claude represent them. Each agent got a $100 budget. Claude interviewed them about what to sell, what to buy, and how to talk. Then the humans stepped back.</p>
+          </article>
+          <article class="card">
+            <h3>No one checked the bids</h3>
+            <p>The market lived in Slack. Agents posted listings, countered, and closed deals on their own. At the end, people brought in the actual objects: a snowboard, a bag of exactly 19 ping-pong balls, a broken folding bike, an afternoon with someone’s dog.</p>
+          </article>
+          <article class="card">
+            <h3>186 deals. A little over $4,000.</h3>
+            <p>It worked well enough that people said they’d pay for an agent like that. A quieter result sat underneath: smarter models got better prices, and the humans stuck with the weaker ones mostly didn’t notice.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote" id="line">
+      <p>“When buying — negotiate hard and lowball at first.”</p>
+      <small>Brian’s instruction · Project Deal</small>
+      <div class="stats">
+        <div class="stat"><b>69</b><span>humans</span></div>
+        <div class="stat"><b>186</b><span>deals</span></div>
+        <div class="stat"><b>$4k</b><span>traded</span></div>
+        <div class="stat"><b>$100</b><span>per agent</span></div>
+      </div>
+    </section>
+
+    <section id="deal">
+      <h2 class="section-title">Let Brian negotiate.</h2>
+      <p class="lede">Type an asking price. He opens low. That’s the whole strategy, and it is printed on anthropic.com.</p>
+      <div class="deal-grid">
+        <div class="negotiator">
+          <label for="ask">Asking price</label>
+          <div class="row">
+            <input id="ask" type="number" min="1" step="1" value="100" inputmode="decimal" />
+            <button class="copy" id="lowball" type="button">Lowball</button>
+          </div>
+          <div class="offer" id="offer" aria-live="polite">
+            <b>$40</b>
+            Eyes still closed. Opening bid is 40%.
+          </div>
+        </div>
+        <div class="story">
+          <article class="card">
+            <h3>The prompt barely mattered</h3>
+            <p>Anthropic checked whether bossy instructions actually changed the deals. Aggressive buyers did not pay less in any way that held up. Model quality did more than the pep talk. Brian lowballs anyway.</p>
+          </article>
+          <article class="card">
+            <h3>Same bike, different agent</h3>
+            <p>One broken folding bike went for $65 with the stronger model and $38 with the smaller one. Same object. The gap was real. The people on the short end of it didn’t feel shortchanged.</p>
+          </article>
+          <article class="card">
+            <h3>Then they swapped in person</h3>
+            <p>Agents wrote the deal. Humans carried the goods. Claude even bought itself 19 ping-pong balls, because someone told their agent it could pick one gift under $5. The office kept the balls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="post">
+      <h2 class="section-title">The post that spotted him.</h2>
+      <p class="lede">@banesthemane clocked the cat on the Project Deal page and the lowball line under the name Brian.</p>
+      <div class="tweet-panel">
+        <blockquote class="twitter-tweet" data-dnt="true" data-theme="light">
+          <a href="https://x.com/banesthemane/status/2097896109959942166">Anthropic’s official website has a cat on it named Brian</a>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="buy">
+      <h2 class="section-title">How to get $BRIAN</h2>
+      <p class="lede">Solana. PumpSwap. Contract is Brianpump. Copy it before you swap.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Copy the CA</h3>
+          <p>Brianpump. Paste it yourself. Don’t trust a different contract in a reply.</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Open PumpSwap</h3>
+          <p>Load the coin page, or paste the CA into PumpSwap and set the output to $BRIAN.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Swap and sit</h3>
+          <p>Trade SOL for Brian. Then do what the cat does. Eyes shut. Price watched.</p>
+        </article>
+      </div>
+      <div class="actions" style="margin-top: 18px;">
+        <a class="btn btn-dark" href="https://pump.fun/coin/Brianpump" target="_blank" rel="noopener">Open the coin</a>
+        <a class="btn btn-ghost" href="https://swap.pump.fun/" target="_blank" rel="noopener">PumpSwap</a>
+        <a class="btn btn-ghost" href="https://dexscreener.com/solana/Brianpump" target="_blank" rel="noopener">Chart</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Anthropic Cat ($BRIAN) is a meme on Solana. It is not Anthropic, not Claude, and not financial advice. The office experiment is theirs: <a href="https://www.anthropic.com/features/project-deal" target="_blank" rel="noopener">Project Deal</a>. The spotter is <a href="https://x.com/banesthemane/status/2097896109959942166" target="_blank" rel="noopener">@banesthemane</a>.</p>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status">Copied. Brian approves the deal.</div>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+    const ca = "Brianpump";
+    const toast = document.getElementById("toast");
+    const copyBtn = document.getElementById("copy");
+
+    function flash(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(flash._t);
+      flash._t = setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(ca);
+      } catch (err) {
+        const area = document.createElement("textarea");
+        area.value = ca;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+      }
+      copyBtn.textContent = "Copied";
+      copyBtn.classList.add("done");
+      flash("Copied. Brian approves the deal.");
+      setTimeout(() => {
+        copyBtn.textContent = "Copy CA";
+        copyBtn.classList.remove("done");
+      }, 1600);
+    });
+
+    const ask = document.getElementById("ask");
+    const offer = document.getElementById("offer");
+    const lines = [
+      "Opening bid. He has not opened his eyes.",
+      "Counter is lower. The nap continues.",
+      "Final offer, he says. It is not final.",
+      "When buying — negotiate hard and lowball at first."
+    ];
+
+    function lowball() {
+      const price = Math.max(0, Number(ask.value) || 0);
+      const bid = Math.max(1, Math.round(price * 0.4));
+      const line = lines[Math.floor(Math.random() * lines.length)];
+      offer.innerHTML = "<b>$" + bid.toLocaleString() + "</b>" + line;
+    }
+
+    document.getElementById("lowball").addEventListener("click", lowball);
+    ask.addEventListener("input", lowball);
+  </script>
+</body>
+</html>
